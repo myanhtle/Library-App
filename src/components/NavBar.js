@@ -26,6 +26,21 @@ export default function NavBar() {
               Search For More Books
             </Link>
           </Nav.Link>
+          <div
+            className="navbar-text"
+            style={{
+              fontFamily: "Monospace",
+              fontSize: "x-large",
+              color: "black",
+              position: "absolute",
+              width: "100%",
+              left: "0",
+              textAlign: "center",
+              paddingBottom: "2%",
+            }}
+          >
+            My Open Library
+          </div>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

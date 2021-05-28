@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import BookCards from "./BookCards";
 import { BookListContext } from "../contexts/bookListContext";
 
 export default function MyBooks() {
@@ -18,11 +19,7 @@ export default function MyBooks() {
 
   return (
     <div>
-      {books.map((b) => (
-        <li>
-          {b.title}, {b.author}
-        </li>
-      ))}
+      <BookCards />
     </div>
   );
 }
