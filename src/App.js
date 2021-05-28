@@ -7,7 +7,7 @@ import BookListProvider from "./contexts/bookListContext";
 
 function App() {
   return (
-    <div style={{ textAlign: "center" }}>
+    <div>
       <NavBar />
       <BookListProvider>
         <Switch>
