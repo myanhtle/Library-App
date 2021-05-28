@@ -1,16 +1,20 @@
-import React from 'react';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import MyBooks from "./components/MyBooks";
+import SearchBooks from "./components/SearchBooks";
+import NavBar from "./components/NavBar";
+import BookListProvider from "./contexts/bookListContext";
 
 function App() {
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+    <div style={{ textAlign: "center" }}>
+      <NavBar />
+      <BookListProvider>
+        <Switch>
+          <Route path="/" component={MyBooks} exact />
+          <Route path="/search" component={SearchBooks} />
+        </Switch>
+      </BookListProvider>
     </div>
   );
 }
