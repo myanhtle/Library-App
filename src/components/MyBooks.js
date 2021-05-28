@@ -4,6 +4,7 @@ import { BookListContext } from "../contexts/bookListContext";
 
 export default function MyBooks() {
   const { setBooks } = useContext(BookListContext);
+  const { books } = useContext(BookListContext);
 
   useEffect(() => {
     fetch("http://localhost:8080/mybooks")
