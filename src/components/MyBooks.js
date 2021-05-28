@@ -3,7 +3,6 @@ import BookCards from "./BookCards";
 import { BookListContext } from "../contexts/bookListContext";
 
 export default function MyBooks() {
-  const { books } = useContext(BookListContext);
   const { setBooks } = useContext(BookListContext);
 
   useEffect(() => {
