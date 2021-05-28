@@ -19,6 +19,9 @@ export default function MyBooks() {
 
   return (
     <div>
+      <div className="p-3" style={{ fontSize: "5vh" }}>
+        There are currently {books.length} books in your library
+      </div>
       <BookCards />
     </div>
   );

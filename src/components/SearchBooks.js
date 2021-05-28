@@ -37,6 +37,7 @@ export default function SearchBooks() {
     const bookObj = {
       title: searchResults[index].volumeInfo.title,
       author: searchResults[index].volumeInfo.authors,
+      preview: searchResults[index].volumeInfo.previewLink,
     };
     fetch("http://localhost:8080/mybooks/search/add", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -73,6 +74,7 @@ export default function SearchBooks() {
           </Button>
         </Form>
       </div>
+
       <ListGroup variant="flush">
         {searchResults.map((r, index) => (
           <ListGroup.Item key={r.id}>
@@ -98,6 +100,7 @@ export default function SearchBooks() {
                     ? " " + r.volumeInfo.authors
                     : ""}
                 </div>
+                <div className="py-2">{r.volumeInfo.description}</div>
                 <Button size="sm" id={index} onClick={handleClick}>
                   Add to Library
                 </Button>

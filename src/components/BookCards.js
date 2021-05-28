@@ -9,7 +9,34 @@ export default function BookCards() {
   const { books } = useContext(BookListContext);
   const { setBooks } = useContext(BookListContext);
 
-  const handleDelete = () => {};
+  const handleDelete = (index) => {
+    const bookObj = books[index];
+    const b = books;
+    fetch("http://localhost:8080/mybooks/delete", {
+      method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(bookObj), // body data type must match "Content-Type" header
+    })
+      .then((response) => {
+        return response;
+      })
+      .then(() => {
+        setBooks(b.filter((book, i) => i !== index));
+      });
+  };
+
+  const openPreview = (e) => {
+    e.preventDefault();
+    window.open(books[e.target.id].preview);
+  };
 
   return (
     <CardDeck className="p-3">
@@ -25,8 +52,11 @@ export default function BookCards() {
             <Card.Text>Author: {b.author}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <Button id={i} size="sm" onClick={handleDelete}>
+            <Button id={i} size="sm" onClick={() => handleDelete(i)}>
               delete
+            </Button>
+            <Button className="m-1" id={i} size="sm" onClick={openPreview}>
+              Preview Book
             </Button>
           </Card.Footer>
         </Card>
